@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getAllCharacters } from '../helpers';
 
-export const useFetchCharacters = ( page ) => {
+export const useFetchCharacters = ( ) => {
 
     const [ characters, setCharacters ] = useState( [] );
-    const [ pages, setPages ] = useState( 0 );
     const [ isLoading, setIsLoading ] = useState( true );
 
     const getCharacters = async () => {
-        const newCharacter = await getAllCharacters( page );
-        setCharacters( newCharacter.characters );
-        setPages( newCharacter.pages );
+        const newCharacter = await getAllCharacters();
+        setCharacters( newCharacter );
         setIsLoading( false );
     }
 
@@ -18,11 +16,10 @@ export const useFetchCharacters = ( page ) => {
 
         getCharacters();
 
-    }, [ page ] );
+    }, [ ] );
 
     return {
         characters,
-        pages,
         isLoading
     };
 }

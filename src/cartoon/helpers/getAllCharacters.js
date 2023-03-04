@@ -1,9 +1,9 @@
 
-export const getAllCharacters = async ( page ) => {
+export const getAllCharacters = async ( ) => {
 
-    const url = `https://rickandmortyapi.com/api/character/?page=${ page }`;
+    const url = 'https://rickandmortyapi.com/api/character';
     const response = await fetch( url );
-    const { results, info } = await response.json();
+    const { results } = await response.json();
 
     const characters = results.map( (character) => (
         {
@@ -16,8 +16,5 @@ export const getAllCharacters = async ( page ) => {
         }
     ));
 
-    return {
-        characters: characters,
-        pages: info.pages
-    };
+    return characters;
 }
