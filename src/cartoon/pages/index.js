@@ -1,5 +1,7 @@
 
 
 export * from './CharactersPage';
-export * from './EpisodePage';
-export * from './LocationsPage';
+export * from './CharacterPage';
+export * from './HumansPage';
+export * from './AliensPage';
+export * from './SearchPage';
