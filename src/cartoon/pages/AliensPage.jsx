@@ -17,7 +17,7 @@ export const AliensPage = () => {
 
             {
                 !isLoading && 
-                <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10'>
+                <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10'>
                     {
                         characters.map( character => (
                             <CharacterCard key={ character.id } { ...character } />
