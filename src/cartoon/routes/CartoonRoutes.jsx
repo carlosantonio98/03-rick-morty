@@ -14,7 +14,7 @@ export const CartoonRoutes = () => {
                 <Route path='search' element={ <SearchPage /> } />
                 <Route path='aliens' element={ <AliensPage /> } />
 
-                <Route path='/' element={ <Navigate to="characters" /> } />
+                <Route path='/*' element={ <Navigate to="characters" /> } />
             </Routes>
         </>
     );

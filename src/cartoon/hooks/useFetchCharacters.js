@@ -5,10 +5,14 @@ export const useFetchCharacters = ( ) => {
 
     const [ characters, setCharacters ] = useState( [] );
     const [ isLoading, setIsLoading ] = useState( true );
+    
+    const [ info, setInfo ] = useState( [] );
+    const [ pageNumber, setPageNumber ] = useState(1);
 
     const getCharacters = async () => {
-        const newCharacter = await getAllCharacters();
-        setCharacters( newCharacter );
+        const { characters, info } = await getAllCharacters( pageNumber );
+        setCharacters( characters );
+        setInfo( info );
         setIsLoading( false );
     }
 
@@ -16,10 +20,13 @@ export const useFetchCharacters = ( ) => {
 
         getCharacters();
 
-    }, [ ] );
+    }, [ pageNumber ] );
 
     return {
         characters,
-        isLoading
+        info,
+        isLoading,
+        pageNumber,
+        setPageNumber
     };
 }

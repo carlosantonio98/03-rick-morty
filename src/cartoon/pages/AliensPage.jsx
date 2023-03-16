@@ -1,9 +1,9 @@
-import { CharacterCard } from '../components';
+import { CharacterCard, Pagination } from '../components';
 import { useFetchCharactersBySpecie } from '../hooks';
 
 export const AliensPage = () => {
 
-    const { characters, isLoading } = useFetchCharactersBySpecie( 'Alien' );
+    const { characters, info, isLoading, pageNumber, setPageNumber } = useFetchCharactersBySpecie( 'Alien' );
 
     return (
         <div className="w-[80%] mx-auto">
@@ -25,6 +25,12 @@ export const AliensPage = () => {
                     }
                 </div>
             }
+
+            <Pagination
+                info={ info }
+                pageNumber={ pageNumber }
+                updatePageNumber={ setPageNumber }
+            />
         </div>
     )
 }

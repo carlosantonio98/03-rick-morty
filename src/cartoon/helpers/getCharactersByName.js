@@ -1,13 +1,25 @@
 
-export const getCharactersByName = async ( name ) => {
-    const url = `https://rickandmortyapi.com/api/character`;
+export const getCharactersByName = async ( name, pageNumber ) => {
+
+    const url = `https://rickandmortyapi.com/api/character/?name=${ name }&page=${ pageNumber }`;
     const response = await fetch( url );
-    const { results } = await response.json();
+    const { results, info } = await response.json();
 
-    const characters = results.filter((character) =>  {
-        name = name.toLowerCase().trim();
-        return character.name.toLowerCase().includes( name );
-    });
+    if ( !results ) return { characters: [], info: [] };   
 
-    return characters;
+    const characters = results.map( ( character ) => (
+        {
+            'id': character.id,
+            'name': character.name,
+            'status': character.status,
+            'species': character.species,
+            'gender': character.gender,
+            'image': character.image
+        }
+    ));
+
+    return {
+        characters,
+        info
+    };
 }

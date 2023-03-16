@@ -1,8 +1,8 @@
-import { CharacterCard } from '../components';
+import { CharacterCard, Pagination } from '../components';
 import { useFetchCharacters } from '../hooks';
 
 export const CharactersPage = () => {
-    const { characters, isLoading } = useFetchCharacters();
+    const { characters, info, isLoading, pageNumber, setPageNumber } = useFetchCharacters();
 
     return (
         <div className="w-[80%] mx-auto">
@@ -26,6 +26,11 @@ export const CharactersPage = () => {
                 </div>
             }
 
+            <Pagination
+                info={ info }
+                pageNumber={ pageNumber }
+                updatePageNumber={ setPageNumber }
+            />
         </div>
     );
 }

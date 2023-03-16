@@ -1,13 +1,11 @@
 
-export const getCharactersBySpecie = async ( specie ) => {
+export const getCharactersBySpecie = async ( specie, pageNumber ) => {
 
-    const url = 'https://rickandmortyapi.com/api/character';
+    const url = `https://rickandmortyapi.com/api/character/?species=${ specie }&page=${ pageNumber }`;
     const response = await fetch( url );
-    const { results } = await response.json();
+    const { results, info } = await response.json();
 
-    let characters = results.filter( ( character ) => character.species == specie );
-
-    characters = characters.map( ( character ) => (
+    const characters = results.map( ( character ) => (
         {
             'id': character.id,
             'name': character.name,
@@ -18,5 +16,8 @@ export const getCharactersBySpecie = async ( specie ) => {
         }
     ));
 
-    return characters;
+    return {
+        characters,
+        info
+    };
 }

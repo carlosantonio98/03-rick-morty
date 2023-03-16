@@ -1,11 +1,11 @@
 
-export const getAllCharacters = async ( ) => {
+export const getAllCharacters = async ( pageNumber ) => {
 
-    const url = 'https://rickandmortyapi.com/api/character';
+    const url = `https://rickandmortyapi.com/api/character/?page=${ pageNumber }`;
     const response = await fetch( url );
-    const { results } = await response.json();
+    const { results, info } = await response.json();
 
-    const characters = results.map( (character) => (
+    const characters = results.map( ( character ) => (
         {
             'id': character.id,
             'name': character.name,
@@ -16,5 +16,8 @@ export const getAllCharacters = async ( ) => {
         }
     ));
 
-    return characters;
+    return {
+        characters,
+        info
+    };
 }

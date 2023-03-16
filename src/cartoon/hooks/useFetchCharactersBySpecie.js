@@ -6,9 +6,13 @@ export const useFetchCharactersBySpecie = ( specie ) => {
     const [ characters, setCharacters ] = useState( [] );
     const [ isLoading, setIsLoading ] = useState( true );
 
+    const [ info, setInfo ] = useState( [] );
+    const [ pageNumber, setPageNumber ] = useState(1);
+
     const getCharacters = async () => {
-        const newCharacter = await getCharactersBySpecie( specie );
-        setCharacters( newCharacter );
+        const { characters, info } = await getCharactersBySpecie( specie, pageNumber );
+        setCharacters( characters );
+        setInfo( info );
         setIsLoading( false );
     }
 
@@ -16,10 +20,13 @@ export const useFetchCharactersBySpecie = ( specie ) => {
 
         getCharacters();
 
-    }, [] );
+    }, [ pageNumber ] );
 
     return {
         characters,
-        isLoading
+        info,
+        isLoading,
+        pageNumber,
+        setPageNumber
     };
 }
