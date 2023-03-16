@@ -19,9 +19,9 @@ export const Navbar = () => {
                 <li className="mr-4">
                     <NavLink to="search" className={ ({ isActive }) => isActive ? 'border-b-2 border-green-500' : '' }>Search</NavLink>
                 </li>
-                <li className='ml-auto'>
+                {/* <li className='ml-auto'>
                     <NavLink to="login" className={ ({ isActive }) => isActive ? 'border-b-2 border-green-500' : '' }>Logout</NavLink>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );
