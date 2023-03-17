@@ -23,14 +23,14 @@ export const CharacterPage = () => {
 
             {
                 !isLoading && 
-                <div className="grid grid-cols-3 gap-10">
+                <div className="grid md:grid-cols-3 gap-10">
                     <img 
                         src={ image } 
                         className="w-full fit-cover rounded-lg animate__animated animate__fadeInLeft" 
                         alt={ name + ' card'} 
                     />
 
-                    <ul className="p-5 col-span-2 animate__animated animate__fadeIn">
+                    <ul className="p-5 md:col-span-2 animate__animated animate__fadeIn">
                         <li>
                             <h3 className="mb-5 font-bold text-2xl">
                                 { name }
